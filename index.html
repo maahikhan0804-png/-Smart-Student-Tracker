@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Student Attendance Tracker</h1>
+        <p>Manage student records and daily attendance</p>
+    </header>
+
+    <section class="dashboard">
+        <div class="card">
+            <h3>Total Students</h3>
+            <p id="totalStudents">0</p>
+        </div>
+        <div class="card">
+            <h3>Present Today</h3>
+            <p id="presentToday">0</p>
+        </div>
+        <div class="card">
+            <h3>Absent Today</h3>
+            <p id="absentToday">0</p>
+        </div>
+        <div class="card">
+            <h3>Attendance</h3>
+            <p id="overallPercent">0%</p>
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2 id="formTitle">Add Student</h2>
+        <form id="studentForm">
+            <input id="studentId" placeholder="Roll Number / Student ID" required>
+            <input id="studentName" placeholder="Student Name" required>
+            <input id="department" placeholder="Department" required>
+            <button type="submit" id="saveBtn">Add Student</button>
+            <button type="button" id="cancelEdit" class="secondary" hidden>
+                Cancel
+            </button>
+        </form>
+    </section>
+
+    <section class="panel">
+        <h2>Daily Attendance</h2>
+        <label for="attendanceDate">Select Date:</label>
+        <input type="date" id="attendanceDate">
+
+        <label for="threshold">Low Attendance Threshold (%):</label>
+        <input type="number" id="threshold" min="0" max="100" value="75">
+    </section>
+
+    <section class="panel">
+        <h2>Student Records</h2>
+
+        <div class="filters">
+            <input id="search" placeholder="Search name, ID or department">
+
+            <select id="departmentFilter">
+                <option value="">All Departments</option>
+            </select>
+
+            <select id="statusFilter">
+                <option value="">All Statuses</option>
+                <option>Present</option>
+                <option>Absent</option>
+                <option>Leave</option>
+                <option>Late</option>
+                <option>Not Marked</option>
+            </select>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No.</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Attendance %</th>
+                        <th>Status</th>
+                        <th>Mark Attendance</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentList"></tbody>
+            </table>
+        </div>
+        <p id="recordCount"></p>
+    </section>
+
+    <section class="panel">
+        <h2>Low Attendance Alerts</h2>
+        <div id="lowAttendance">No alerts.</div>
+    </section>
+
+    <section class="panel">
+        <h2>Student Attendance History</h2>
+        <select id="historyStudent">
+            <option value="">Select a student</option>
+        </select>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Roll No.</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="historyList"></tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
